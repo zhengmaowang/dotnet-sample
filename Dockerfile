@@ -2,7 +2,7 @@
 # 1) Build stage
 # ========================
 # Pin your .NET 9 base image. Adjust tag based on official previews available.
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /app
 
 # Copy project file & restore
@@ -18,7 +18,7 @@ RUN dotnet publish -c Release -o out
 # ========================
 # 2) Runtime stage
 # ========================
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
 WORKDIR /app
 RUN apt update -y
 RUN apt-get install -y procps curl
